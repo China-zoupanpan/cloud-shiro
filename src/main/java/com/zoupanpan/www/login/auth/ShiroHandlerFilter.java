@@ -66,7 +66,7 @@ public class ShiroHandlerFilter extends AbstractShiroFilter {
         Throwable t = null;
 
         try {
-            //包装request，从写getSession方法
+            //包装request，从写getSession方法，不再由容器实现
             final ServletRequest request = prepareServletRequest(servletRequest, servletResponse, chain);
             final ServletResponse response = prepareServletResponse(request, servletResponse, chain);
             String ticket = getTicket((HttpServletRequest) request);
@@ -167,7 +167,6 @@ public class ShiroHandlerFilter extends AbstractShiroFilter {
         Annotation[] declaredAnnotationsInMethod = method.getDeclaredAnnotations();
         Annotation[] declaredAnnotationsInClass = method.getDeclaringClass().getDeclaredAnnotations();
         if (declaredAnnotationsInMethod == null && declaredAnnotationsInClass == null) {
-            annotationsMap.put(request.getMethod() + request.getRequestURI(), Collections.EMPTY_SET);
             return Collections.EMPTY_SET;
         }
 
