@@ -6,8 +6,8 @@ package com.zoupanpan.www.base.bean;
  */
 public abstract class BaseBean {
 
-    public static Integer TRUE_INT = 0;
-    public static Integer FAIL_INT = -1;
+    public static Integer TRUE_INT = 1;
+    public static Integer FALSE_INT = 0;
 
     public BaseBean() {
         result = ResultBean.SUCCESS;

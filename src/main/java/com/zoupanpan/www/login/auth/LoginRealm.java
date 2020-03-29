@@ -31,10 +31,10 @@ public class LoginRealm extends AuthorizingRealm {
             throw new AccountException("Null usernames are not allowed by this realm.");
         }else{
             User user = userDao.findByName(username);
-            if(user==null){
+            if (user == null) {
                 throw new UnknownAccountException("un know account");
             }
-            if(!user.getPassword().equals(String.valueOf(token.getPassword()))) {
+            if (!user.getPassword().equals(String.valueOf(token.getPassword()))) {
                 throw new IncorrectCredentialsException("The password is error");
             }
             return new SimpleAuthenticationInfo(username,user.getPassword().toCharArray(),"loginRealm");

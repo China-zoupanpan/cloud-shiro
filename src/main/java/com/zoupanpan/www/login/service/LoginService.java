@@ -7,6 +7,8 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 /**
  * @author zoupanpan
  * @version 2020/3/22 0:23
@@ -14,22 +16,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
+    //有效期6个小时
+    private final static int EXPIRED_SIX_HOUR = 60 * 60 * 1000;
 
-
-    public static ResultBean login(LoginParamBean loginParamBean){
-
-
+    public ResultBean login(LoginParamBean loginParamBean) {
         try{
             UsernamePasswordToken token = new UsernamePasswordToken(loginParamBean.getUserName(),loginParamBean.getPassword());
+            token.setRememberMe(false);
             Subject currentUser = SecurityUtils.getSubject();
             currentUser.login(token);
-            currentUser.getSession().setTimeout(1000*60*60);
-            System.out.println(currentUser.getSession().getId());
+            loginParamBean.setToken(Objects.toString(currentUser.getSession().getId(), null));
+            currentUser.getSession().setTimeout(EXPIRED_SIX_HOUR);
         }catch(Exception e){
-            return ResultBean.FAILURE;
+            System.out.println(e.getMessage());
+            return ResultBean.FAILURE(10000, e.getMessage());
         }
 
-        return ResultBean.SUCCESS;
+        return ResultBean.SUCCESS(loginParamBean);
 
     }
 
