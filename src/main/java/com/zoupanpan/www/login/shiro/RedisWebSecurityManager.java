@@ -21,7 +21,7 @@ public class RedisWebSecurityManager extends DefaultWebSecurityManager {
 
 
     public RedisWebSecurityManager(Realm realm, RedisSessionDao redisSessionDao) {
-        //添加了一层本地缓存
+        //添加了一层本地缓存 未做到期处理
         super.setCacheManager(new AbstractCacheManager() {
             protected Cache<Serializable, Session> createCache(String name) throws CacheException {
                 return new MapCache(name, new ConcurrentHashMap());

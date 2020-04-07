@@ -74,6 +74,9 @@ public class ShiroHandlerFilter extends AbstractShiroFilter {
             //请求中带的ticket，系统中不存在
             if (StringUtils.isNotBlank(ticket) && !Objects.equals(ticket, subject.getSession().getId())) {
                 log.info("ticket错误,ticket:{}==sessionId:{}", ticket, subject.getSession(false).getId());
+                //RedisWebSecurityManager redisWebSecurityManager = SpringFactory.getBean("redisSecurityManager");
+                //Cache<Object, Object> cache = redisWebSecurityManager.getCacheManager().getCache(CachingSessionDAO.ACTIVE_SESSION_CACHE_NAME);
+                //删除无用的缓存
                 subject.getSession(false).stop();
             }
             ThreadContext.bind(subject);
