@@ -10,10 +10,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * @version 2020/3/22 12:42
  */
 @NoRepositoryBean
-public interface  BaseDao<T,ID> extends JpaRepository<T,ID>{
+public interface BaseDao<T, ID> extends JpaRepository<T, ID> {
 
 
-    default JdbcTemplate getJdbcTemplate(){
+    default JdbcTemplate getJdbcTemplate() {
         return SpringFactory.getBean("jdbcTemplate");
     }
 

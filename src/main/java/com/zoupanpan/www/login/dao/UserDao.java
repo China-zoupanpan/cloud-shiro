@@ -22,12 +22,12 @@ public interface UserDao  extends BaseDao<User,Long> {
 
 
     @Transactional(readOnly = true)
-    default  User queryUser(Long id){
-        String sql="select * from user where id ="+id;
-        if(Objects.nonNull(id)){
-            RowMapper<User> rowMapper= new BeanPropertyRowMapper<>(User.class);
+    default User queryUser(Long id) {
+        String sql = "select * from user where id = " + id;
+        if (Objects.nonNull(id)) {
+            RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
             List<User> userList = getJdbcTemplate().query(sql, rowMapper);
-            return CollectionUtils.isEmpty(userList)?null:userList.get(0);
+            return CollectionUtils.isEmpty(userList) ? null : userList.get(0);
         }
         return null;
     }

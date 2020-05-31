@@ -4,6 +4,7 @@ import com.zoupanpan.www.base.bean.BaseBean;
 import com.zoupanpan.www.login.dao.SessionEntityDao;
 import com.zoupanpan.www.login.domain.SessionEntity;
 import com.zoupanpan.www.util.JSONUtil;
+
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.shiro.session.Session;
@@ -15,7 +16,11 @@ import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -35,6 +40,7 @@ public class JDBCSessionDAO extends AbstractSessionDAO {
     @Override
     @Transactional
     protected Serializable doCreate(Session session) {
+        
 //        Serializable sessionId = generateSessionId(session);
 //        assignSessionId(session, sessionId);
         SessionEntity entity = new SessionEntity((SimpleSession) session);

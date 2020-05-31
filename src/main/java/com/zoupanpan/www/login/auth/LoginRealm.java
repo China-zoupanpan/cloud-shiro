@@ -2,7 +2,14 @@ package com.zoupanpan.www.login.auth;
 
 import com.zoupanpan.www.login.dao.UserDao;
 import com.zoupanpan.www.login.domain.User;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AccountException;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -29,7 +36,7 @@ public class LoginRealm extends AuthorizingRealm {
         //char[] password = token.getPassword();
         if (username == null) {
             throw new AccountException("Null usernames are not allowed by this realm.");
-        }else{
+        } else {
             User user = userDao.findByName(username);
             if (user == null) {
                 throw new UnknownAccountException("un know account");

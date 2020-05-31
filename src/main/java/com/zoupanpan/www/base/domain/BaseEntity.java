@@ -15,7 +15,7 @@ public class BaseEntity {
     private Date createTime;
     private Date updateTime;
 
-    @Column(name="is_valid")
+    @Column(name = "is_valid")
     public Integer getIsValid() {
         return isValid;
     }
@@ -23,7 +23,8 @@ public class BaseEntity {
     public void setIsValid(Integer isValid) {
         this.isValid = isValid;
     }
-    @Column(name="create_time")
+
+    @Column(name = "create_time")
     public Date getCreateTime() {
         return createTime;
     }
@@ -32,7 +33,7 @@ public class BaseEntity {
         this.createTime = createTime;
     }
 
-    @Column(name="update_time")
+    @Column(name = "update_time")
     public Date getUpdateTime() {
         return updateTime;
     }

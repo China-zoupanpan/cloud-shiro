@@ -34,7 +34,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -182,9 +187,8 @@ public class ShiroHandlerFilter extends AbstractShiroFilter {
                 .collect(Collectors.toSet());
         Set<Annotation> unionAll = Sets.union(annotationsClassExclude, annotationsMethod).stream()
                 .filter(annotation ->
-                        annotation instanceof RequiresAuthentication ||
-                                annotation instanceof RequiresRoles ||
-                                annotation instanceof RequiresPermissions
+                        annotation instanceof RequiresAuthentication || annotation instanceof RequiresRoles
+                                || annotation instanceof RequiresPermissions
 
                 ).collect(Collectors.toSet());
         log.info("shiro初始化：method：{},uri:{},annotation:{}", request.getMethod(), request.getRequestURI(), unionAll);

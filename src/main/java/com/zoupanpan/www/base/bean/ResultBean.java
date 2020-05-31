@@ -9,7 +9,7 @@ package com.zoupanpan.www.base.bean;
 public class ResultBean<T> {
 
 
-    public final static ResultBean SUCCESS = new ResultBean(0,null);
+    public static final ResultBean SUCCESS = new ResultBean(0, null);
 
     //public final static ResultBean FAILURE = new ResultBean(-1,null);
 
@@ -22,6 +22,10 @@ public class ResultBean<T> {
         this.code = code;
         this.msg = msg;
         this.data = data;
+    }
+
+    public static <T> ResultBean SUCCESS() {
+        return new ResultBean(0, null, null);
     }
 
     public static <T> ResultBean SUCCESS(T data) {
@@ -40,9 +44,9 @@ public class ResultBean<T> {
         return new ResultBean(code, msg, data);
     }
 
-    private final Integer code;
+    private Integer code;
 
-    private final String msg;
+    private String msg;
 
     private T data;
 
@@ -52,6 +56,14 @@ public class ResultBean<T> {
 
     public String getMsg() {
         return msg;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public T getData() {

@@ -12,9 +12,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringFactory implements ApplicationContextAware {
 
-    private static  ApplicationContext applicationContext;
+    private static ApplicationContext applicationContext;
 
-    public static <T> T  getBean(String beanId){
+
+    public static <T> T getBean(String beanId) {
         return (T) applicationContext.getBean(beanId);
     }
 
