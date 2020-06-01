@@ -9,6 +9,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Role;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 
@@ -25,6 +26,7 @@ public class LoginService {
     //有效期6个小时
     private static final int EXPIRED_SIX_HOUR = 60 * 60 * 1000;
 
+    @Transactional(readOnly = true)
     public ResultBean login(LoginParamBean loginParamBean) {
         try {
             UsernamePasswordToken token = new UsernamePasswordToken(loginParamBean.getUserName(), loginParamBean.getPassword());

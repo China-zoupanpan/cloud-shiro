@@ -2,9 +2,9 @@ package com.zoupanpan.www.login.rest;
 
 import com.zoupanpan.plugin.kafka.Producer;
 import com.zoupanpan.www.base.ValidatorUtils;
-import com.zoupanpan.www.base.advice.LangHelper;
-import com.zoupanpan.www.base.advice.SimpleException;
 import com.zoupanpan.www.base.bean.ResultBean;
+import com.zoupanpan.www.base.webmvc.LangHelper;
+import com.zoupanpan.www.base.webmvc.SimpleException;
 import com.zoupanpan.www.login.bean.LoginParamBean;
 import com.zoupanpan.www.login.service.LoginService;
 

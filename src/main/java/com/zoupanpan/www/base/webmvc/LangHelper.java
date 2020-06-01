@@ -1,4 +1,4 @@
-package com.zoupanpan.www.base.advice;
+package com.zoupanpan.www.base.webmvc;
 
 /**
  * @author zoupanpan

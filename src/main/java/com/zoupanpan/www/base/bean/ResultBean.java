@@ -24,7 +24,7 @@ public class ResultBean<T> {
         this.data = data;
     }
 
-    public static <T> ResultBean SUCCESS() {
+    public static ResultBean SUCCESS() {
         return new ResultBean(0, null, null);
     }
 

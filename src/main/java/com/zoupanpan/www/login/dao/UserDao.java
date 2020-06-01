@@ -2,6 +2,7 @@ package com.zoupanpan.www.login.dao;
 
 import com.zoupanpan.www.base.dao.BaseDao;
 import com.zoupanpan.www.login.domain.User;
+
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -16,10 +17,10 @@ import java.util.Objects;
  * @version 2020/3/22 15:33
  */
 @Repository
-public interface UserDao  extends BaseDao<User,Long> {
+public interface UserDao extends BaseDao<User, Long> {
 
+    @Transactional(readOnly = true)
     User findByName(String name);
-
 
     @Transactional(readOnly = true)
     default User queryUser(Long id) {

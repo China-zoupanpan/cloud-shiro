@@ -1,4 +1,4 @@
-package com.zoupanpan.www.base.advice;
+package com.zoupanpan.www.base.webmvc;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
